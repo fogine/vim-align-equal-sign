@@ -1,6 +1,6 @@
 inoremap <silent> = =<Esc>:call <SID>ealign()<CR>a
 function! s:ealign()
-  let p = '^.*=[^>]*$'
+  let p = '^.*=\s.*$'
   if exists(':Tabularize') && getline('.') =~# '^.*=' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
     let column = strlen(substitute(getline('.')[0:col('.')],'[^=]','','g'))
     let position = strlen(matchstr(getline('.')[0:col('.')],'.*=\s*\zs.*'))
